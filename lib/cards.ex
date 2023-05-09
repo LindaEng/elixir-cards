@@ -41,6 +41,11 @@ defmodule Cards do
       {:ok, binary} -> :erlang.binary_to_term(binary)
       {:error, _reason} -> "That file does not exist"
     end
+  end
 
+  def create_hand(hand) do
+    Cards.create_deck
+    |> Cards.shuffle
+    |> Cards.deal(hand)
   end
 end
